@@ -7,16 +7,15 @@
   <groupId>edu.asu.bmi</groupId>
   <artifactId>bmi540</artifactId>
   <version>1.0</version>
+  <packaging>pom</packaging>
 
   <name>ASU :: BMI 540</name>
   <description>BMI 540 Example Project</description>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.10</version>
-    </dependency>
-  </dependencies>
+  <modules>
+    <module>EMR</module>
+    <module>Service</module>
+  </modules>
+
 
 </project>

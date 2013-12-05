@@ -1,0 +1,24 @@
+<service name="EMRService">
+
+  <description>Example EMR services</description>
+
+  <parameter name="ServiceClass">edu.asu.bmi.test.service.EMRServiceImpl</parameter>
+  <parameter name="ServiceTCCL">composite</parameter>
+
+  <operation name="getPatientDetail">
+    <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+  </operation>
+  <operation name="getPatientIDs">
+    <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+  </operation>
+  <operation name="createPatient">
+    <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+  </operation>
+  <operation name="deletePatient">
+    <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+  </operation>
+  <operation name="echo">
+    <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+  </operation>
+
+</service>

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://edu.asu.bmi.540/emr" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://test.bmi.asu.edu" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax21="http://impl.model.test.bmi.asu.edu/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://test.bmi.asu.edu">
+    <wsdl:types>
+        <xs:schema xmlns:ax22="http://impl.model.test.bmi.asu.edu/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://edu.asu.bmi.540/emr">
+            <xs:import namespace="http://impl.model.test.bmi.asu.edu/xsd"/>
+            <xs:element name="getPatientIDs">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPatientIDsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPatientDetail">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="args0" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPatientDetailResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:PatientImpl"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="echo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="args0" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="echoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deletePatient">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="args0" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deletePatientResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createPatient">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="args0" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="args1" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createPatientResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://impl.model.test.bmi.asu.edu/xsd">
+            <xs:complexType name="PatientImpl">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="age" type="xs:int"/>
+                    <xs:element minOccurs="0" name="mrn" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="createPatientRequest">
+        <wsdl:part name="parameters" element="ns:createPatient"/>
+    </wsdl:message>
+    <wsdl:message name="createPatientResponse">
+        <wsdl:part name="parameters" element="ns:createPatientResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getPatientIDsRequest">
+        <wsdl:part name="parameters" element="ns:getPatientIDs"/>
+    </wsdl:message>
+    <wsdl:message name="getPatientIDsResponse">
+        <wsdl:part name="parameters" element="ns:getPatientIDsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deletePatientRequest">
+        <wsdl:part name="parameters" element="ns:deletePatient"/>
+    </wsdl:message>
+    <wsdl:message name="deletePatientResponse">
+        <wsdl:part name="parameters" element="ns:deletePatientResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getPatientDetailRequest">
+        <wsdl:part name="parameters" element="ns:getPatientDetail"/>
+    </wsdl:message>
+    <wsdl:message name="getPatientDetailResponse">
+        <wsdl:part name="parameters" element="ns:getPatientDetailResponse"/>
+    </wsdl:message>
+    <wsdl:message name="echoRequest">
+        <wsdl:part name="parameters" element="ns:echo"/>
+    </wsdl:message>
+    <wsdl:message name="echoResponse">
+        <wsdl:part name="parameters" element="ns:echoResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="EMRServicePortType">
+        <wsdl:operation name="createPatient">
+            <wsdl:input message="tns:createPatientRequest" wsaw:Action="createPatient"/>
+            <wsdl:output message="tns:createPatientResponse" wsaw:Action="urn:createPatientResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientIDs">
+            <wsdl:input message="tns:getPatientIDsRequest" wsaw:Action="getPatientIDs"/>
+            <wsdl:output message="tns:getPatientIDsResponse" wsaw:Action="urn:getPatientIDsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatient">
+            <wsdl:input message="tns:deletePatientRequest" wsaw:Action="deletePatient"/>
+            <wsdl:output message="tns:deletePatientResponse" wsaw:Action="urn:deletePatientResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientDetail">
+            <wsdl:input message="tns:getPatientDetailRequest" wsaw:Action="getPatientDetail"/>
+            <wsdl:output message="tns:getPatientDetailResponse" wsaw:Action="urn:getPatientDetailResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="echo">
+            <wsdl:input message="tns:echoRequest" wsaw:Action="echo"/>
+            <wsdl:output message="tns:echoResponse" wsaw:Action="urn:echoResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="EMRServiceSoap11Binding" type="tns:EMRServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="createPatient">
+            <soap:operation soapAction="createPatient" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientIDs">
+            <soap:operation soapAction="getPatientIDs" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatient">
+            <soap:operation soapAction="deletePatient" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientDetail">
+            <soap:operation soapAction="getPatientDetail" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="echo">
+            <soap:operation soapAction="echo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="EMRServiceSoap12Binding" type="tns:EMRServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="createPatient">
+            <soap12:operation soapAction="createPatient" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientIDs">
+            <soap12:operation soapAction="getPatientIDs" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatient">
+            <soap12:operation soapAction="deletePatient" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientDetail">
+            <soap12:operation soapAction="getPatientDetail" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="echo">
+            <soap12:operation soapAction="echo" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="EMRServiceHttpBinding" type="tns:EMRServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="createPatient">
+            <http:operation location="createPatient"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientIDs">
+            <http:operation location="getPatientIDs"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatient">
+            <http:operation location="deletePatient"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientDetail">
+            <http:operation location="getPatientDetail"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="echo">
+            <http:operation location="echo"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="EMRService">
+        <wsdl:port name="EMRServiceHttpSoap11Endpoint" binding="tns:EMRServiceSoap11Binding">
+            <soap:address location="http://localhost:8080/services/edu/asu/bmi/test/EMRService"/>
+        </wsdl:port>
+        <wsdl:port name="EMRServiceHttpSoap12Endpoint" binding="tns:EMRServiceSoap12Binding">
+            <soap12:address location="http://localhost:8080/services/edu/asu/bmi/test/EMRService"/>
+        </wsdl:port>
+        <wsdl:port name="EMRServiceHttpEndpoint" binding="tns:EMRServiceHttpBinding">
+            <http:address location="http://localhost:8080/services/edu/asu/bmi/test/EMRService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
